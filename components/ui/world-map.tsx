@@ -21,30 +21,31 @@ export function WorldMap({
   const svgRef = useRef<SVGSVGElement>(null);
   const map = new DottedMap({ height: 100, grid: "diagonal" });
 
-  const { theme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null; // Prevent mismatches during hydration
+  // Use resolvedTheme to prevent incorrect initial rendering
+  const currentTheme = resolvedTheme || theme;
+
+  if (!mounted) return <div className="w-full aspect-[2/1] bg-background"></div>;
 
   const svgMap = map.getSVG({
     radius: 0.22,
-    color: theme === "dark" ? "#FFFFFF40" : "#00000040",
+    color: currentTheme === "dark" ? "#FFFFFF40" : "#00000040",
     shape: "circle",
-    backgroundColor: theme === "dark" ? "black" : "white",
+    backgroundColor: currentTheme === "dark" ? "black" : "white",
   });
 
-  // Restore your working projection function
   const projectPoint = (lat: number, lng: number) => {
     const x = (lng + 180) * (800 / 360);
     const y = (90 - lat) * (400 / 180);
     return { x, y };
   };
 
-  // Restore your original arc path function
   const createCurvedPath = (
     start: { x: number; y: number },
     end: { x: number; y: number }
