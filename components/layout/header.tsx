@@ -41,7 +41,7 @@ export default function Header() {
                       width={40}
                       height={40}
                       className="hidden dark:block h-8 w-8"
-                      src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Facme-logo-light.d4da7bf2.png&w=96&q=75"
+                      src="https://www.everythingtalent.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Facme-logo-light.d4da7bf2.png&w=48&q=75"
                     />
                     <span className="lg:hidden font-bold">Everything Talent</span>
                     <span className="hidden font-bold lg:inline-block">Everything Talent</span>
@@ -65,7 +65,7 @@ export default function Header() {
                       width={40}
                       height={40}
                       className="hidden dark:block h-8 w-8"
-                      src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Facme-logo-light.d4da7bf2.png&w=96&q=75"
+                      src="https://www.everythingtalent.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Facme-logo-light.d4da7bf2.png&w=48&q=75"
                     />
                     <span className="lg:hidden font-bold">Everything Talent</span>
                   </div>

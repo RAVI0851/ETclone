@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import DottedMap from "dotted-map";
 import Image from "next/image";
@@ -22,6 +22,13 @@ export function WorldMap({
   const map = new DottedMap({ height: 100, grid: "diagonal" });
 
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null; // Prevent mismatches during hydration
 
   const svgMap = map.getSVG({
     radius: 0.22,
@@ -30,12 +37,14 @@ export function WorldMap({
     backgroundColor: theme === "dark" ? "black" : "white",
   });
 
+  // Restore your working projection function
   const projectPoint = (lat: number, lng: number) => {
     const x = (lng + 180) * (800 / 360);
     const y = (90 - lat) * (400 / 180);
     return { x, y };
   };
 
+  // Restore your original arc path function
   const createCurvedPath = (
     start: { x: number; y: number },
     end: { x: number; y: number }
@@ -46,7 +55,7 @@ export function WorldMap({
   };
 
   return (
-    <div className="w-full aspect-[2/1] dark:bg-black bg-white rounded-lg  relative font-sans">
+    <div className="w-full aspect-[2/1] bg-background text-foreground rounded-lg relative font-sans">
       <Image
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
         className="h-full w-full [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] pointer-events-none select-none"
@@ -70,17 +79,9 @@ export function WorldMap({
                 fill="none"
                 stroke="url(#path-gradient)"
                 strokeWidth="1"
-                initial={{
-                  pathLength: 0,
-                }}
-                animate={{
-                  pathLength: 1,
-                }}
-                transition={{
-                  duration: 1,
-                  delay: 0.5 * i,
-                  ease: "easeOut",
-                }}
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 1, delay: 0.5 * i, ease: "easeOut" }}
                 key={`start-upper-${i}`}
               ></motion.path>
             </g>

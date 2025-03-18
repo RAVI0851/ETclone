@@ -33,7 +33,7 @@ export default function JoinMission() {
     
 
   return (
-    <div className="relative w-full min-h-screen bg:background">
+    <div className="relative w-full min-h-screen">
       {/* World Map as Background */}
       <div className="absolute inset-0 -z-10">
       <WorldMap dots={testDots} />;
@@ -44,7 +44,7 @@ export default function JoinMission() {
       <section className="relative flex justify-center items-center min-h-screen opacity-70 ">
         <div
           ref={ref}
-          className={`border-2 gradient-border max-w-5xl rounded-3xl px-6 sm:px-10 md:px-12 py-16 sm:py-20 md:py-24 bg-white bg-opacity-80 dark:bg-black dark:bg-opacity-70 backdrop-blur-md shadow-lg transition-all duration-700 ease-out ${
+          className={`border-2 gradient-border max-w-5xl rounded-3xl px-6 sm:px-10 md:px-12 py-16 sm:py-20 md:py-24 bg-white bg-opacity-{50} dark:bg-black dark:bg-opacity-{50} backdrop-blur-md shadow-lg transition-all duration-700 ease-out ${
             inView ? "opacity-100 scale-100" : "opacity-0 scale-90"
           }`}
         >
