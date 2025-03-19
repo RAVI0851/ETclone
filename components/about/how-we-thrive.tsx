@@ -74,61 +74,85 @@ export default function AboutHowWeThrive() {
             <div className="grid grid-cols-2 gap-6">
               <div
                 ref={card1Ref}
-                className={`rounded-xl border border-border  hover:border-gradient-to-r  hover:border-2 dark:bg-gray-900/50 p-4 backdrop-blur-sm md:p-6 transition-all shadow-xl duration-200 group dark:border-gray-700 hover:gradient-border hover:bg-purple-600 bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 hover:scale-[101%] ${card1InView ? "opacity-100 transform-none" : "opacity-0 translate-y-5"} transition-all duration-1000`}
+                className={`rounded-xl relative group overflow-hidden dark:bg-gray-900/50 p-4 backdrop-blur-sm md:p-6 transition-all shadow-xl duration-300 dark:border-gray-700 bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 hover:scale-[101%] ${card1InView ? "opacity-100 transform-none" : "opacity-0 translate-y-5"} transition-all duration-1000`}
               >
-                <UsersRound className="mb-3 h-6 w-6 text-purple-400" />
-                <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">Community-Driven</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                {/* Animated border gradient */}
+                <div className="absolute inset-0 rounded-xl -z-10 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-400 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                <div className="absolute inset-[2px] rounded-lg bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 -z-10 group-hover:from-purple-900/90 group-hover:via-slate-900 group-hover:to-slate-950 transition-all duration-300"></div>
+                
+                <UsersRound className="mb-3 h-6 w-6 text-purple-400 group-hover:text-purple-300 transition-colors duration-300" />
+                <h3 className="mb-2 font-semibold text-gray-900 dark:text-white group-hover:text-white transition-colors duration-300">Community-Driven</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
                   We build strong connections and foster collaboration within our team.
                 </p>
               </div>
               <div
                 ref={card2Ref}
-                className={`rounded-xl border border-border hover:border-none dark:bg-gray-900/50 p-4 backdrop-blur-sm md:p-6 transition-all shadow-xl duration-200 group dark:border-gray-700 hover:gradient-border hover:bg-purple-600 bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 hover:scale-[101%] ${card2InView ? "opacity-100 transform-none" : "opacity-0 translate-y-5"} transition-all duration-1000`}
+                className={`rounded-xl relative group overflow-hidden dark:bg-gray-900/50 p-4 backdrop-blur-sm md:p-6 transition-all shadow-xl duration-300 dark:border-gray-700 bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 hover:scale-[101%] ${card2InView ? "opacity-100 transform-none" : "opacity-0 translate-y-5"} transition-all duration-1000`}
               >
-                <Lightbulb className="mb-3 h-6 w-6 text-purple-400" />
-                <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">Innovation First</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                {/* Animated border gradient */}
+                <div className="absolute inset-0 rounded-xl -z-10 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-400 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                <div className="absolute inset-[2px] rounded-lg bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 -z-10 group-hover:from-purple-900/90 group-hover:via-slate-900 group-hover:to-slate-950 transition-all duration-300"></div>
+                
+                <Lightbulb className="mb-3 h-6 w-6 text-purple-400 group-hover:text-purple-300 transition-colors duration-300" />
+                <h3 className="mb-2 font-semibold text-gray-900 dark:text-white group-hover:text-white transition-colors duration-300">Innovation First</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
                   We encourage creative thinking and novel approaches to challenges.
                 </p>
               </div>
               <div
                 ref={card3Ref}
-                className={`rounded-xl border border-border hover:border-none dark:bg-gray-900/50 p-4 backdrop-blur-sm md:p-6 transition-all shadow-xl duration-200 group dark:border-gray-700 hover:gradient-border hover:bg-purple-600 bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 hover:scale-[101%] ${card3InView ? "opacity-100 transform-none" : "opacity-0 translate-y-5"} transition-all duration-1000`}
+                className={`rounded-xl relative group overflow-hidden dark:bg-gray-900/50 p-4 backdrop-blur-sm md:p-6 transition-all shadow-xl duration-300 dark:border-gray-700 bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 hover:scale-[101%] ${card3InView ? "opacity-100 transform-none" : "opacity-0 translate-y-5"} transition-all duration-1000`}
               >
-                <Rocket className="mb-3 h-6 w-6 text-purple-400" />
-                <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">Action Oriented</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                {/* Animated border gradient */}
+                <div className="absolute inset-0 rounded-xl -z-10 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-400 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                <div className="absolute inset-[2px] rounded-lg bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 -z-10 group-hover:from-purple-900/90 group-hover:via-slate-900 group-hover:to-slate-950 transition-all duration-300"></div>
+                
+                <Rocket className="mb-3 h-6 w-6 text-purple-400 group-hover:text-purple-300 transition-colors duration-300" />
+                <h3 className="mb-2 font-semibold text-gray-900 dark:text-white group-hover:text-white transition-colors duration-300">Action Oriented</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
                   We transform ideas into tangible results through decisive action.
                 </p>
               </div>
               <div
                 ref={card4Ref}
-                className={`rounded-xl border border-border hover:border-none dark:bg-gray-900/50 p-4 backdrop-blur-sm md:p-6 transition-all shadow-xl duration-200 group dark:border-gray-700 hover:gradient-border hover:bg-purple-600 bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 hover:scale-[101%] ${card4InView ? "opacity-100 transform-none" : "opacity-0 translate-y-5"} transition-all duration-1000`}
+                className={`rounded-xl relative group overflow-hidden dark:bg-gray-900/50 p-4 backdrop-blur-sm md:p-6 transition-all shadow-xl duration-300 dark:border-gray-700 bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 hover:scale-[101%] ${card4InView ? "opacity-100 transform-none" : "opacity-0 translate-y-5"} transition-all duration-1000`}
               >
-                <TrendingUp className="mb-3 h-6 w-6 text-purple-400" />
-                <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">Continuous Growth</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                {/* Animated border gradient */}
+                <div className="absolute inset-0 rounded-xl -z-10 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-400 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                <div className="absolute inset-[2px] rounded-lg bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 -z-10 group-hover:from-purple-900/90 group-hover:via-slate-900 group-hover:to-slate-950 transition-all duration-300"></div>
+                
+                <TrendingUp className="mb-3 h-6 w-6 text-purple-400 group-hover:text-purple-300 transition-colors duration-300" />
+                <h3 className="mb-2 font-semibold text-gray-900 dark:text-white group-hover:text-white transition-colors duration-300">Continuous Growth</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
                   We embrace learning and development as core principles.
                 </p>
               </div>
               <div
                 ref={card5Ref}
-                className={`rounded-xl border border-border hover:border-none dark:bg-gray-900/50 p-4 backdrop-blur-sm md:p-6 transition-all shadow-xl duration-200 group dark:border-gray-700 hover:gradient-border hover:bg-purple-600 bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 hover:scale-[101%] ${card5InView ? "opacity-100 transform-none" : "opacity-0 translate-y-5"} transition-all duration-1000`}
+                className={`rounded-xl relative group overflow-hidden dark:bg-gray-900/50 p-4 backdrop-blur-sm md:p-6 transition-all shadow-xl duration-300 dark:border-gray-700 bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 hover:scale-[101%] ${card5InView ? "opacity-100 transform-none" : "opacity-0 translate-y-5"} transition-all duration-1000`}
               >
-                <Star className="mb-3 h-6 w-6 text-purple-400" />
-                <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">Excellence Pursuit</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                {/* Animated border gradient */}
+                <div className="absolute inset-0 rounded-xl -z-10 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-400 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                <div className="absolute inset-[2px] rounded-lg bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 -z-10 group-hover:from-purple-900/90 group-hover:via-slate-900 group-hover:to-slate-950 transition-all duration-300"></div>
+                
+                <Star className="mb-3 h-6 w-6 text-purple-400 group-hover:text-purple-300 transition-colors duration-300" />
+                <h3 className="mb-2 font-semibold text-gray-900 dark:text-white group-hover:text-white transition-colors duration-300">Excellence Pursuit</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
                   We strive for exceptional quality in everything we do.
                 </p>
               </div>
               <div
                 ref={card6Ref}
-                className={`rounded-xl border border-border hover:border-none dark:bg-gray-900/50 p-4 backdrop-blur-sm md:p-6 transition-all shadow-xl duration-200 group dark:border-gray-700 hover:gradient-border hover:bg-purple-600 bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 hover:scale-[101%] ${card6InView ? "opacity-100 transform-none" : "opacity-0 translate-y-5"} transition-all duration-1000`}
+                className={`rounded-xl relative group overflow-hidden dark:bg-gray-900/50 p-4 backdrop-blur-sm md:p-6 transition-all shadow-xl duration-300 dark:border-gray-700 bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 hover:scale-[101%] ${card6InView ? "opacity-100 transform-none" : "opacity-0 translate-y-5"} transition-all duration-1000`}
               >
-                <Award className="mb-3 h-6 w-6 text-purple-400" />
-                <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">Shared Success</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                {/* Animated border gradient */}
+                <div className="absolute inset-0 rounded-xl -z-10 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-400 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                <div className="absolute inset-[2px] rounded-lg bg-gradient-to-br from-purple-50 via-pink-50 to-[#ffffff76] dark:from-black dark:via-slate-900 dark:to-slate-950 -z-10 group-hover:from-purple-900/90 group-hover:via-slate-900 group-hover:to-slate-950 transition-all duration-300"></div>
+                
+                <Award className="mb-3 h-6 w-6 text-purple-400 group-hover:text-purple-300 transition-colors duration-300" />
+                <h3 className="mb-2 font-semibold text-gray-900 dark:text-white group-hover:text-white transition-colors duration-300">Shared Success</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
                   We celebrate achievements and grow together as one team.
                 </p>
               </div>
@@ -154,4 +178,3 @@ export default function AboutHowWeThrive() {
     </section>
   )
 }
-

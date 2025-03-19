@@ -68,6 +68,7 @@ export default function Header() {
                       src="https://www.everythingtalent.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Facme-logo-light.d4da7bf2.png&w=48&q=75"
                     />
                     <span className="lg:hidden font-bold">Everything Talent</span>
+                    <span className="hidden font-bold lg:block">Everything Talent</span>
                   </div>
                 </Link>
                 <div className="border-none h-[30px] w-[1px] -mx-3 bg-slate-700/30 dark:bg-slate-300/30 backdrop-blur-[7px]"></div>
@@ -88,10 +89,24 @@ export default function Header() {
                           Solutions
                           <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-100 group-data-[state=open]:rotate-180" />
                         </button>
+                        {solutionsOpen && (
+                          <div className="absolute left-0 top-full mt-2 w-56 rounded-md bg-white dark:bg-slate-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <div className="py-1">
+                              <Link href="/solutions/ats" className="block px-4 py-2 text-sm text-slate-950 dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800">
+                                Applicant Tracking
+                              </Link>
+                              <Link href="/solutions/assessment" className="block px-4 py-2 text-sm text-slate-950 dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800">
+                                Technical Assessment
+                              </Link>
+                              <Link href="/solutions/screening" className="block px-4 py-2 text-sm text-slate-950 dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800">
+                                AI Screening
+                              </Link>
+                            </div>
+                          </div>
+                        )}
                       </li>
                     </ul>
                   </div>
-                  <div className="absolute left-0 top-full flex justify-center"></div>
                 </nav>
                 <li className="font-regular text-slate-950 font-[400] dark:text-slate-50 text-sm">
                   <Link href="/pricing">Pricing</Link>
@@ -103,7 +118,7 @@ export default function Header() {
                   <Link href="/support">Support</Link>
                 </li>
                 <li className="font-regular text-sm dark:text-[#c166ee] font-bold text-customPurple dark:hover:text-customPurple hover:text-customPurple">
-                  <Link href="/about">About</Link>
+                  <Link href="/about" aria-current="page">About</Link>
                 </li>
               </ul>
             </section>
@@ -152,25 +167,27 @@ export default function Header() {
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               >
                 <Sun className="rotate-0 scale-100 transition-all dark:-rotate-90 hover:text-black dark:scale-0" />
-                <Moon className="absolute rotate-90 scale-0 transition-all outline-none hover:dark:text-white dark:text-slate-400 dark:rotate-0 dark:scale-100 dark:hover:text-black" />
+                <Moon className="absolute rotate-90 scale-0 transition-all outline-none hover:dark:text-white dark:text-slate-400 dark:rotate-0 dark:scale-100 dark:hover:text-white" />
                 <span className="sr-only">Toggle theme</span>
               </button>
               <div className="ml-6 hidden lg:block">
-                <button className="whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 group relative inline-flex animate-rainbow cursor-pointer items-center justify-center rounded-md bg-[length:200%] font-medium dark:text-black transition-all duration-500 ease-in-out border-white hover:border-none before:absolute before:bottom-[-20%] before:left-1/2 before:z-0 before:h-1/5 before:w-3/5 before:-translate-x-1/2 before:animate-rainbow before:bg-[linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))] before:bg-[length:200%] before:[filter:blur(calc(0.8*1rem))] before:opacity-75 before:transition-opacity before:duration-1000 hover:before:opacity-100 hover:scale-[1.02] after:absolute after:inset-0 after:rounded-md after:p-[2px] after:bg-[linear-gradient(121.31deg,#8B5CF6_-12.16%,#EC4899_48.37%,#F59E0B_112.89%)] after:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] after:[-webkit-mask-composite:destination-out] after:[mask-composite:exclude] after:opacity-0 after:transition-opacity after:duration-300 hover:after:opacity-100 dark:bg-white dark:hover:ring-0 [&>span]:relative [&>span]:z-10 h-10 px-4 py-2 group w-full bg-white text-black border-none">
-                  Login
-                  <svg
-                    className="ml-2 -mr-1 w-5 h-5 group-hover:translate-x-1 transition"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </button>
+                <Link href="/login">
+                  <button className="whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 group relative inline-flex animate-rainbow cursor-pointer items-center justify-center rounded-md bg-[length:200%] font-medium dark:text-black transition-all duration-500 ease-in-out border-white hover:border-none before:absolute before:bottom-[-20%] before:left-1/2 before:z-0 before:h-1/5 before:w-3/5 before:-translate-x-1/2 before:animate-rainbow before:bg-[linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))] before:bg-[length:200%] before:[filter:blur(calc(0.8*1rem))] before:opacity-75 before:transition-opacity before:duration-1000 hover:before:opacity-100 hover:scale-[1.02] after:absolute after:inset-0 after:rounded-md after:p-[2px] after:bg-[linear-gradient(121.31deg,#8B5CF6_-12.16%,#EC4899_48.37%,#F59E0B_112.89%)] after:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] after:[-webkit-mask-composite:destination-out] after:[mask-composite:exclude] after:opacity-0 after:transition-opacity after:duration-300 hover:after:opacity-100 dark:bg-white dark:hover:ring-0 [&>span]:relative [&>span]:z-10 h-10 px-4 py-2 group w-full bg-white text-black border-none">
+                    Login
+                    <svg
+                      className="ml-2 -mr-1 w-5 h-5 group-hover:translate-x-1 transition"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -180,14 +197,79 @@ export default function Header() {
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             >
               <Sun className="rotate-0 scale-100 transition-all dark:-rotate-90 hover:text-black dark:scale-0" />
-              <Moon className="absolute rotate-90 scale-0 transition-all outline-none hover:dark:text-white dark:text-slate-400 dark:rotate-0 dark:scale-100 dark:hover:text-black" />
+              <Moon className="absolute rotate-90 scale-0 transition-all outline-none hover:dark:text-white dark:text-slate-400 dark:rotate-0 dark:scale-100 dark:hover:text-white" />
               <span className="sr-only">Toggle theme</span>
             </button>
           </div>
           <Menu className="hover:cursor-pointer lg:hidden -mr-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} />
         </div>
       </nav>
+      
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden absolute top-[54px] inset-x-0 z-40 bg-white dark:bg-slate-900 shadow-lg p-4 border-t border-slate-200 dark:border-slate-800">
+          <ul className="space-y-4">
+            <li className="font-regular text-slate-950 dark:text-slate-50 text-sm font-[400] py-2">
+              <Link href="/" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+            </li>
+            <li className="font-regular text-slate-950 dark:text-slate-50 text-sm font-[400] py-2">
+              <Link href="/products" onClick={() => setMobileMenuOpen(false)}>Products</Link>
+            </li>
+            <li className="font-regular text-slate-950 dark:text-slate-50 text-sm font-[400] py-2">
+              <button
+                className="flex items-center justify-between w-full"
+                onClick={() => setSolutionsOpen(!solutionsOpen)}
+              >
+                Solutions
+                <ChevronDown className={`h-4 w-4 transition-transform ${solutionsOpen ? "rotate-180" : ""}`} />
+              </button>
+              {solutionsOpen && (
+                <ul className="mt-2 ml-4 space-y-2">
+                  <li>
+                    <Link href="/solutions/ats" className="block text-sm text-slate-950 dark:text-slate-50" onClick={() => setMobileMenuOpen(false)}>
+                      Applicant Tracking
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/solutions/assessment" className="block text-sm text-slate-950 dark:text-slate-50" onClick={() => setMobileMenuOpen(false)}>
+                      Technical Assessment
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/solutions/screening" className="block text-sm text-slate-950 dark:text-slate-50" onClick={() => setMobileMenuOpen(false)}>
+                      AI Screening
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </li>
+            <li className="font-regular text-slate-950 dark:text-slate-50 text-sm font-[400] py-2">
+              <Link href="/pricing" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>
+            </li>
+            <li className="font-regular text-slate-950 dark:text-slate-50 text-sm font-[400] py-2">
+              <Link href="/blog" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
+            </li>
+            <li className="font-regular text-slate-950 dark:text-slate-50 text-sm font-[400] py-2">
+              <Link href="/support" onClick={() => setMobileMenuOpen(false)}>Support</Link>
+            </li>
+            <li className="font-regular text-sm dark:text-[#c166ee] font-bold text-customPurple dark:hover:text-customPurple hover:text-customPurple py-2">
+              <Link href="/about" onClick={() => setMobileMenuOpen(false)} aria-current="page">About</Link>
+            </li>
+            <li className="pt-4">
+              <button className="w-full text-center whitespace-nowrap text-sm font-medium py-2 px-4 rounded-md bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+                Request a Demo
+              </button>
+            </li>
+            <li className="pt-2">
+              <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
+                <button className="w-full text-center whitespace-nowrap text-sm font-medium py-2 px-4 rounded-md bg-white dark:bg-slate-800 text-black dark:text-white border border-slate-300 dark:border-slate-700">
+                  Login
+                </button>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
     </header>
   )
 }
-

@@ -70,6 +70,19 @@ export default function AboutStandards() {
     threshold: 0.1,
   })
   const pointsRefs = useRef<(HTMLLIElement | null)[]>([])
+  const { ref: mobileContainerRef, inView: mobileContainerInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
+  const mobileItemsRefs = useRef<(HTMLDivElement | null)[]>([])
+  const mobilePointsRefs = useRef<(HTMLLIElement | null)[][]>([])
+  const mobileImagesRefs = useRef<(HTMLImageElement | null)[]>([])
+
+  useEffect(() => {
+    mobilePointsRefs.current = standards.map(() => [])
+    mobileImagesRefs.current = standards.map(() => null)
+    mobileItemsRefs.current = standards.map(() => null)
+  }, [])
 
   useEffect(() => {
     if (contentInView) {
@@ -86,6 +99,33 @@ export default function AboutStandards() {
       })
     }
   }, [contentInView, activeStandard])
+
+  useEffect(() => {
+    if (mobileContainerInView) {
+      mobileItemsRefs.current.forEach((ref, cardIndex) => {
+        if (ref) {
+          setTimeout(() => {
+            ref.style.opacity = "1"
+            ref.style.transform = "translateY(0)"
+            
+            mobilePointsRefs.current[cardIndex]?.forEach((pointRef, pointIndex) => {
+              if (pointRef) {
+                setTimeout(() => {
+                  pointRef.style.opacity = "1"
+                  pointRef.style.transform = "translateX(0)"
+                }, 300 + pointIndex * 150)
+              }
+            })
+            
+            if (mobileImagesRefs.current[cardIndex]) {
+              mobileImagesRefs.current[cardIndex]!.style.opacity = "1"
+              mobileImagesRefs.current[cardIndex]!.style.transform = "scale(1)"
+            }
+          }, 300 * cardIndex)
+        }
+      })
+    }
+  }, [mobileContainerInView])
 
   const activeContent = standards.find((s) => s.id === activeStandard)
 
@@ -173,11 +213,13 @@ export default function AboutStandards() {
             </div>
           </div>
         </div>
-        <div className="grid gap-8 w-[calc(100%-1rem)] mx-auto sm:hidden">
-          {standards.map((standard) => (
+        <div className="grid gap-8 w-[calc(100%-1rem)] mx-auto sm:hidden" ref={mobileContainerRef}>
+          {standards.map((standard, cardIndex) => (
             <div
               key={standard.id}
+              ref={(el) => (mobileItemsRefs.current[cardIndex] = el)}
               className="bg-gradient-to-br border from-purple-50 via-pink-50 to-white dark:from-black dark:via-slate-900 dark:to-slate-950 rounded-3xl p-8 md:p-16 transition-transform duration-200"
+              style={{ opacity: 0, transform: "translateY(20px)", transition: "all 0.8s ease" }}
             >
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="space-y-6">
@@ -185,11 +227,17 @@ export default function AboutStandards() {
                   <p className="text-xl">{standard.subtitle}</p>
                   <p className="text-gray-600">{standard.description}</p>
                   <ul className="list-none space-y-3 text-gray-800 dark:text-gray-200 text-sm sm:text-base">
-                    {standard.points.map((point, index) => (
+                    {standard.points.map((point, pointIndex) => (
                       <li
-                        key={index}
+                        key={pointIndex}
+                        ref={(el) => {
+                          if (!mobilePointsRefs.current[cardIndex]) {
+                            mobilePointsRefs.current[cardIndex] = [];
+                          }
+                          mobilePointsRefs.current[cardIndex][pointIndex] = el;
+                        }}
                         className="flex items-center gap-2"
-                        style={{ opacity: 0, transform: "translateX(-20px)" }}
+                        style={{ opacity: 0, transform: "translateX(-20px)", transition: "all 0.5s ease" }}
                       >
                         <span className="text-lg text-purple-500">✧</span>
                         {point}
@@ -201,8 +249,13 @@ export default function AboutStandards() {
                   <img
                     src={standard.image || "/placeholder.svg"}
                     alt={`${standard.subtitle} illustration`}
+                    ref={(el) => (mobileImagesRefs.current[cardIndex] = el)}
                     className="absolute right-0 top-0 w-full h-full object-cover rounded-lg"
-                    style={{ opacity: 0, transform: "scale(0.9)" }}
+                    style={{
+                      opacity: 0,
+                      transform: "scale(0.9)",
+                      transition: "all 0.8s ease",
+                    }}
                   />
                 </div>
               </div>
@@ -213,4 +266,3 @@ export default function AboutStandards() {
     </div>
   )
 }
-
